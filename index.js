@@ -58,8 +58,11 @@ module.exports = function (opts) {
 				return;
 			}
 
-			var originalSize = file.contents.length;
-			var optimizedSize = files[0].contents.length;
+			
+			var originalSize = 0;
+			originalSize = file.contents.length;
+			var optimizedSize = 0;
+			optimizedSize = files[0].contents.length;
 			var saved = originalSize - optimizedSize;
 			var percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
 			var savedMsg = 'saved ' + prettyBytes(saved) + ' - ' + percent.toFixed(1).replace(/\.0$/, '') + '%';
