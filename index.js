@@ -60,9 +60,17 @@ module.exports = function (opts) {
 
 			
 			var originalSize = 0;
-			originalSize = file.contents.length;
+			try {
+				originalSize = file.contents.length;
+			} catch (ex) {
+				//yeah, nice error handling man	
+			}
 			var optimizedSize = 0;
-			optimizedSize = files[0].contents.length;
+			try {
+				optimizedSize = files[0].contents.length;
+			} catch (ex) {
+				//yeah, another nice error handling man	
+			}	
 			var saved = originalSize - optimizedSize;
 			var percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
 			var savedMsg = 'saved ' + prettyBytes(saved) + ' - ' + percent.toFixed(1).replace(/\.0$/, '') + '%';
